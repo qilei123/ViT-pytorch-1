@@ -249,7 +249,7 @@ def main():
     # Required parameters
     parser.add_argument("--name", required=True,
                         help="Name of this run. Used for monitoring.")
-    parser.add_argument("--dataset",  default="cifar10", # choices=["cifar10", "cifar100","gastro_v2_binary"],
+    parser.add_argument("--dataset",  default="cifar10", # choices=["cifar10", "cifar100","gastro_v2_binary","gastro_v2_5categories"],
                         help="Which downstream task.")
     parser.add_argument("--dataset_dir", default=None,
                         help="the dir for customer dataset")
