@@ -1,0 +1,1 @@
+python3 train.py --name gastro_v2_binary --dataset gastro_v2_binary --dataset_dir /data1/qilei_chen/DATA/gastro_v2/binary/ --model_type ViT-B_16 --pretrained_dir pretrainmodel/ViT-B_16.npz
