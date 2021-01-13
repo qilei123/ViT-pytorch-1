@@ -62,7 +62,10 @@ def setup(args):
     num_classes = 10 if args.dataset == "cifar10" else 100
     if "binary" in args.dataset:
         num_classes=2
-
+    elif "3categories" in args.dataset:
+        num_classes = 3
+    elif "5categories" in args.dataset:
+        num_classes = 5
     model = VisionTransformer(config, args.img_size, zero_head=True, num_classes=num_classes)
     model.load_from(np.load(args.pretrained_dir))
     model.to(args.device)
