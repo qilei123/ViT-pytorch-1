@@ -4,7 +4,7 @@ import torch
 
 from torchvision import transforms, datasets
 from torch.utils.data import DataLoader, RandomSampler, DistributedSampler, SequentialSampler
-
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +23,23 @@ def get_loader(args):
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
     ])
+    if "gastro_v2" in args.dataset:
+        transform_train = transforms.Compose([
+            transforms.Resize((args.img_size, args.img_size)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+        ])
+        data_transforms = {"train":transform_train,"val":transform_test}
+        if not os.path.exists(args.dataset_dir):
+            print("---Dataset dir is not exists---")
+            exit()
+        image_datasets = {x: datasets.ImageFolder(os.path.join(args.dataset_dir, x),
+                                                data_transforms[x])
+                        for x in ['train', 'val']}
+        dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=args.batch_size,
+                                                    shuffle=True, num_workers=4)
+                    for x in ['train', 'val']}                
+        return dataloaders['train'],dataloaders['val']
 
     if args.dataset == "cifar10":
         trainset = datasets.CIFAR10(root="./data",
