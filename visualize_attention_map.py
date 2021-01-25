@@ -68,6 +68,8 @@ grid_size = int(np.sqrt(aug_att_mat.size(-1)))
 mask = v[0, 1:].reshape(grid_size, grid_size).detach().numpy()
 mask = cv2.resize(mask / mask.max(), im.size)[..., np.newaxis]
 result = (mask * im).astype("uint8")
+cv2.imwrite("output/mask.jpg",mask)
+cv2.imwrite("output/im.jpg",im)
 cv2.imwrite("output/result.jpg",result)
 fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(16, 16))
 
