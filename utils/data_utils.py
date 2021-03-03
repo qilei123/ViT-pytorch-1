@@ -23,7 +23,7 @@ def get_loader(args):
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
     ])
-    if "gastro_v2" in args.dataset:
+    if ("gastro_v2" in args.dataset) or ("folderdata" in args.dataset):
         transform_train = transforms.Compose([
             transforms.Resize((args.img_size, args.img_size)),
             transforms.ToTensor(),

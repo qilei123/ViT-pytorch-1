@@ -1,1 +1,3 @@
-python3 train.py --name gastro_v2_5categories --dataset gastro_v2_5categories --dataset_dir /data1/qilei_chen/DATA/gastro_v2/5categories/ --model_type ViT-B_16 --pretrained_dir pretrainmodel/ViT-B_16.npz
+#python3 train.py --name gastro_v2_5categories --dataset gastro_v2_5categories --dataset_dir /data1/qilei_chen/DATA/gastro_v2/5categories/ --model_type ViT-B_16 --pretrained_dir pretrainmodel/ViT-B_16.npz
+
+python3 train.py --name folderdata_rop3 --dataset folderdata_rop3 --dataset_dir /data1/qilei_chen/DATA/ROP_DATASET/ROP_201707_C3R_Integrated/Integrated/folder_dataset/ --model_type ViT-B_16 --pretrained_dir pretrainmodel/ViT-B_16.npz
